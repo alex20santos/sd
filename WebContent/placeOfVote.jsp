@@ -5,23 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>New Election</title>
+<title>Place of vote</title>
 </head>
 <body>
-	<h1>New Election</h1>
-
-	<p>
-	<a href="createElectionCG.jsp">Conselho Geral</a>
-	<p>
-	<a href="createElectionNucleo.jsp">Nucleo de Estudantes</a>
-	<p>
-	<a href="createElectionDep.jsp">Departamento</a>
-	<p-->
-
-
-	<br>
-	<p><a href="admin_menu.jsp">Back</a></p>
+	<h2>Local em que votou um eleitor</h2>
+	<s:form action="placeOfVote" method="post">
+		<s:text name="Numero de cc:" />
+		<s:textfield name="id" />
+        <p>
+        	<s:hidden name="type" value="getVotes" />
+		<s:submit/>
+	</s:form>
 	
-
 </body>
 </html>

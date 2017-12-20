@@ -115,6 +115,7 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
         Statement stmt = cria_ligacao_bd();
 
         int dep_id = getDepartmentID(v.getDepartment().getName());
+        
         String query = "insert into delegates value ("+dep_id+","+Integer.parseInt(id)+",0);";
         System.out.println("querying: "+ query);
         try {
@@ -164,7 +165,7 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
         VotingTable votingTable = searchVotingTable(v);
         String query = "delete from delegates where placeID ="+votingTable.id+" and isMainDelegate=1;";
         try {
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -179,14 +180,11 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
 
     public void removeMemberFromVotingTable(String id, VotingTable v) throws RemoteException{
         Statement stmt = cria_ligacao_bd();
-
-        Person p = searchUser(id);
-        ResultSet res = null;
-        String columnValue="";
         VotingTable votingTable = searchVotingTable(v);
-        String query = "delete from delegates where placeID ="+votingTable.id+";";
+        String query = "delete from delegates where placeID ="+votingTable.id+" and personID="+id+";";
+        System.out.print(query);
         try {
-            stmt.executeQuery(query);
+            stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -716,7 +714,7 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
         Statement stmt = cria_ligacao_bd();
         Election election = searchElection(e.name);
         int election_id = election.id;
-        String query = "delete from Candidates where candidateID=(select candidateID from candidates where idElection="+election_id+" and name like '"+name+"');";
+        String query = "delete from candidates where idElection="+election_id+" and name like '"+name+"';";
         System.out.println("querying: "+ query);
         try {
             stmt.executeUpdate(query); //utiliza-se para inserir
@@ -728,8 +726,8 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
     public void editElectionDate(Election e, Date d) throws RemoteException {
         Statement stmt = cria_ligacao_bd();
         Election election = searchElection(e.getName());
-        String date_init= d.getDay()+"-"+d.getMonth()+"-"+d.getYear()+"-"+d.getStarting_hour().getHour()+d.getStarting_hour().getMinute();
-        String date_end= d.getDay()+"-"+d.getMonth()+"-"+d.getYear()+"-"+d.getEnding_hour().getHour()+d.getEnding_hour().getMinute();
+        String date_init= d.getDay()+"-"+d.getMonth()+"-"+d.getYear()+"-"+d.getStarting_hour().getHour()+"-"+d.getStarting_hour().getMinute();
+        String date_end= d.getDay()+"-"+d.getMonth()+"-"+d.getYear()+"-"+d.getEnding_hour().getHour()+"-"+d.getEnding_hour().getMinute();
         String query = "update Elections " +
                 "set date_init ='"+date_init+"'"+
                 "where name like '"+e.name+"';";

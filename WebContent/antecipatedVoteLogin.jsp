@@ -5,23 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>New Election</title>
+<title>Login</title>
 </head>
 <body>
-	<h1>New Election</h1>
-
+	<h3>Login User</h3>
+	<s:form action="antecipatedVote" method="post">
+		User id:
+		<s:textfield name="username" />
+		Password:
+		<s:textfield name="password" />
+		<s:hidden name="type" value="getElections" />
+		<s:submit value="Login"/>
+	</s:form>
 	<p>
-	<a href="createElectionCG.jsp">Conselho Geral</a>
-	<p>
-	<a href="createElectionNucleo.jsp">Nucleo de Estudantes</a>
-	<p>
-	<a href="createElectionDep.jsp">Departamento</a>
-	<p-->
-
-
-	<br>
-	<p><a href="admin_menu.jsp">Back</a></p>
-	
-
 </body>
 </html>

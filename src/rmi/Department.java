@@ -2,8 +2,8 @@ package rmi;
 import java.io.Serializable;
 
 public class Department implements Serializable{
-    String name;
-    int id;
+    public String name;
+    public int id;
 
     public Department(String name, int i) {
         this.name = name;
@@ -16,6 +16,11 @@ public class Department implements Serializable{
     public String getName() {
         return name;
     }
+    
+    public int getId() {
+        return id;
+    }
+
 
     public void setName(String name) {
 

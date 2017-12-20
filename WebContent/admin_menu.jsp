@@ -18,6 +18,30 @@
 	<p>
 	<a href="createElection.jsp"> Criar eleição</a>
 	<p>
+	<p>
+	<form id = "myForm" action="candidatesManage" method="post">
+		<s:hidden name="type" value="getElections" />
+    		<a href="candidatesMenu.jsp" onclick="document.getElementById('myForm').submit();">Gestão de listas candidatas a uma eleição</a>
+	</form>
+	<p>
+	<form id = "myForm" action="Elections" method="post">
+		<s:hidden name="type" value="getElections" />
+    		<a href="chooseElection.jsp" onclick="document.getElementById('myForm').submit();">Editar eleição</a>
+	</form>
+	<p>
+	<a href="antecipatedVoteLogin.jsp"> Voto antecipado</a>
+	<p>
+	<a href="placeOfVote.jsp"> Ver em que local votou um eleitor</a>
+	<p>	
+	<form id = "myForm" action="Elections" method="post">
+		<s:hidden name="type" value="pastElections" />
+    		<a href="choosePreviousElection.jsp" onclick="document.getElementById('myForm').submit();">Mostrar informação detalhada de eleições passadas</a>  
+    		<s:submit value="Choose"/> 		
+	</form>
+	<p>
+	<a href="membersManageMenu.jsp"> Gestão de membros de mesa de voto</a>
+	
+	
 	
 
 </body>

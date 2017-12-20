@@ -40,7 +40,7 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
     <action name="loginAdmin" class="hey.action.LoginAdminAction" method="execute">
       <result name="success">/admin_menu.jsp</result>
       <result name="login">/index.jsp</result>
-    </action>
+    </action>           
     
     	<action name="Person">
 		<result>/insertPerson.jsp</result>
@@ -54,13 +54,21 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 		<result name="success">/admin_menu.jsp</result>
 		<result name="login">/editPerson.jsp</result>
 	</action>
+	
+	<action name="candidatesManage" class="hey.action.CandidatesManageAction" method="execute">
+		<result name="success">/admin_menu.jsp</result>
+		<result name="login">/candidatesSubMenu.jsp</result>
+	</action>
 
 	<action name="DepartmentManagement" class="hey.action.DepartmentManagementAction" method="execute">
 		<result name="success">/admin_menu.jsp</result>		
 	</action>
 	
 	<action name="Elections" class="hey.action.ElectionsAction" method="execute">
-		<result name="success">/admin_menu.jsp</result>		
+		<result name="success">/admin_menu.jsp</result>
+		<result name="login">/editElection.jsp</result>
+		<result name="none">/pastElectionsInfo.jsp</result>		
+				
 	</action>
     
     	<action name="PersonRegister" class="hey.action.PersonRegisterAction" method="execute">
@@ -74,8 +82,20 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
       <result name="login">/index.jsp</result>
     </action>
     
+    <action name="antecipatedVote" class="hey.action.AntecipatedVoteAction" method="execute">
+		<result name="login">/chooseAntecipatedElection.jsp</result>
+		<result name="none">/admin_menu.jsp</result>
+		<result name="success">/chooseCanidateAnt.jsp</result>
+    </action>
     
-
+    <action name="placeOfVote" class="hey.action.PlaceOfVoteInfoAction" method="execute">
+    		<result name="success">/placeOfVoteUser.jsp</result>
+    </action>
+    
+    <action name="membersManagement" class="hey.action.MembersManagementAction" method="execute">
+    		<result name="success">/membersEdit.jsp</result>
+    		<result name="login">/admin_menu.jsp</result>
+    </action>
     
 
   </package>

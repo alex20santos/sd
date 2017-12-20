@@ -15,6 +15,11 @@ public class Candidate implements Serializable{
         this.id = id;
     }
 
+    public Candidate(Election election, String name, ArrayList<Person> list) {
+        this.election = election;
+        this.name = name;
+        this.list = list;
+    }
 
     public String getName() {
         return name;

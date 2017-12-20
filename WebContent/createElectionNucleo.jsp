@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Create Election CG</title>
+<title>Create Election Nucleo</title>
 </head>
 <body>
-	<h2>Criar eleição conselho geral</h2>
+	<h2>Criar eleição nucleo de estudantes</h2>
 	<s:form action="Elections" method="post">
 		<br>
 		<br>
@@ -18,6 +18,10 @@
 		<br>
 		<s:text name="Descrição:" />
 		<s:textfield name="description" />
+		<br>
+		<br>
+		<s:text name="Departamento:" />
+		<s:textfield name="department" />
 		<br>
 		<br>
 		<s:text name="Data (dd/mm/aaaa)):" />
@@ -32,7 +36,7 @@
 		<s:textfield name="hEnd" />
 		<br>
 		<br>
-		<s:hidden name="type" value="createElectionCG"/>
+		<s:hidden name="type" value="createElectionNucleo"/>
 		<s:submit/>
 	</s:form>
 	<br>
