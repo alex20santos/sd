@@ -1511,6 +1511,24 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
         return stmt;
 
     }
+    
+    
+    public String electionInfoRealTime(String id) throws RemoteException{
+        try {
+            Election el = searchElection(id);
+            ArrayList<Candidate> cands = getCandidates(el);
+       
+            String info = "Branco:"+Integer.toString(el.blank_votes)+"\n;Nulo:"+Integer.toString(el.null_votes)+";\n";
+            for(Candidate c:cands ){
+                info += c.name+":"+Integer.toString(getNumberOfVotesOfCandidate(c))+";\n";
+            }
+            return info;
+        }
+        catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            return "Info unavailable";
+        }
+    }
 
     public static void main(String [] args) throws RemoteException {
 

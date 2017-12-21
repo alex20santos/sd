@@ -1,1 +1,11 @@
+/.DS_Store
 /hey/
+websockets
+/log4j.dtd
+/log4j.xml
+/rmi/
+/rmiserver/
+/struts.xml
+/ws/
+/WebSocketAnnotation/
+master

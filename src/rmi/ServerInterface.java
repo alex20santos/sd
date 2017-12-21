@@ -88,4 +88,6 @@ public interface ServerInterface extends Remote{
     int getNumberOfVotes(Election e) throws RemoteException;
 
     int getNumberOfVotesOfCandidate(Candidate c) throws RemoteException;
+    
+    String electionInfoRealTime(String id) throws RemoteException;
 }
