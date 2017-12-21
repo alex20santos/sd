@@ -19,6 +19,7 @@ public class ElectionsAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	public String username = null,type=null,name=null,description=null,date=null,hInit=null,hEnd=null,department=null,option=null,newContent=null,chosenElectionString=null;
     ArrayList<Election> elections ;
+    ArrayList<Election> electionsNow ;
     ArrayList<Election> previousElections ;
     ArrayList<Candidate> candidatesOfElection;
     Election chosenElection;
@@ -89,38 +90,10 @@ public class ElectionsAction extends ActionSupport implements SessionAware {
 		        return LOGIN;
 			}        			
 	    }
-    		else if(type.equals("editElection")) {
-    			if(option.equals("1")) {
-    				String parts[] = newContent.split(" ");
-    				String partsDate [] = parts[0].split("/");
-    				int dia = Integer.parseInt(partsDate[0]);
-    				int mes = Integer.parseInt(partsDate[1]);
-    				int ano = Integer.parseInt(partsDate[2]);
-    				String partsHinit [] = parts[1].split(":");
-    				int hi = Integer.parseInt(partsHinit[0]);
-    				int mi = Integer.parseInt(partsHinit[1]);
-    				Hour h_init = new Hour(hi,mi);
-    				String partsHend [] = parts[2].split(":");
-    				int he = Integer.parseInt(partsHend[0]);
-    				int me = Integer.parseInt(partsHend[1]);
-    				Hour h_end = new Hour(he,me);
-    				Date d = new Date(dia,mes,ano,h_init,h_end);
-    				Election e = (Election)session.get("chosenElection");
-    				rmiCon.editElectionDate(e, d);
-    			}
-    			else if(option.equals("2")) {
-    				Election e = (Election)session.get("chosenElection");
-    				rmiCon.editElectionName(e, newContent);
-    			}
-    			else if(option.equals("3")) {
-    				Election e = (Election)session.get("chosenElection");
-    				rmiCon.editElectionDescription(e, newContent);
-    			}
-    			return SUCCESS;
-    		}
     		else if(type.equals("pastElections")) {
     			previousElections = rmiCon.getPreviousElections();
     			session.put("previousElections", previousElections);
+    			return NONE;
     		}
     		else if(type.equals("getPastInfo")) {
     			chosenElection = rmiCon.searchElection(chosenElectionString);
@@ -135,10 +108,11 @@ public class ElectionsAction extends ActionSupport implements SessionAware {
     		        session.put("candidatesVotes", num_votes);
     		        int totalVotes = rmiCon.getNumberOfVotes(chosenElection);
     		        session.put("totalVotes", totalVotes);
-    		        return NONE;
+    		        return INPUT;
     			} 
     		}
-    	return SUCCESS;        
+        
+    		return SUCCESS;        
 	}
 
 

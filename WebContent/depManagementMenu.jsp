@@ -16,11 +16,17 @@
 
 	
 	<p>
-	<a href="insertDepartment.jsp">Inserir</a>
+	<form action="InsertDep" method="post">
+		<s:submit value="Inserir"></s:submit>
+	</form>
 	<p>
-	<a href="editDep.jsp">Editar</a>
+	<form action="EditDep" method="post">
+		<s:submit value="Editar"></s:submit>
+	</form>
 	<p>
-	<a href="deleteDep.jsp">Eliminar</a>
+	<form action="Deletedep" method="post">
+		<s:submit value="Eliminar"></s:submit>
+	</form>
 	<p>
 
 
