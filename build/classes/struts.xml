@@ -50,6 +50,51 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 		<result>/editPerson.jsp</result>
 	</action>
 	
+	<action name="DepManage">
+		<result>/depManagementMenu.jsp</result>
+	</action>
+	
+	<action name="CreateEl">
+		<result>/createElection.jsp</result>
+	</action>
+	
+	<action name="AntVote">
+		<result>/antecipatedVoteLogin.jsp</result>
+	</action>
+	
+	<action name="PlaceVote">
+		<result>/placeOfVote.jsp</result>
+	</action>
+	
+	<action name="MembersMenu">
+		<result>/membersManageMenu.jsp</result>
+	</action>
+	
+	<action name="CreateCG">
+		<result>/createElectionCG.jsp</result>
+	</action>
+	
+	<action name="CreateNucleo">
+		<result>/createElectionNucleo.jsp</result>
+	</action>
+	
+	<action name="CreateDep">
+		<result>/createElectionDep.jsp</result>
+	</action>
+	
+	<action name="InsertDep">
+		<result>/insertDepartment.jsp</result>
+	</action>
+	
+	<action name="EditDep">
+		<result>/editDep.jsp</result>
+	</action>
+	
+	<action name="DeleteDep">
+		<result>/deleteDep.jsp</result>
+	</action>
+	
+	
 	<action name="PersonEditor" class="hey.action.PersonEditorAction" method="execute">
 		<result name="success">/admin_menu.jsp</result>
 		<result name="login">/editPerson.jsp</result>
@@ -66,9 +111,22 @@ and should reside on the classpath of the webapp (generally /WEB-INF/classes). -
 	
 	<action name="Elections" class="hey.action.ElectionsAction" method="execute">
 		<result name="success">/admin_menu.jsp</result>
-		<result name="login">/editElection.jsp</result>
-		<result name="none">/pastElectionsInfo.jsp</result>		
-				
+		<result name="none" type = "redirect">/choosePreviousElection.jsp</result>	
+		<result name="input" type="redirect">/pastElectionsInfo.jsp</result>	
+	</action>
+	
+	<action name="EditElections" class="hey.action.EditElectionAction" method="execute">
+		<result name="login" type = "redirect">/editElection.jsp</result>
+		<result name="success" type = "redirect">/chooseElection.jsp</result>	
+		<result name="none" type = "redirect">/admin_menu.jsp</result>	
+		
+	</action>
+	
+	
+	
+	<action name="ElectionsNow" class="hey.action.ElectionsNowAction" method="execute">
+		<result name="success" type = "redirect">/chooseElectionNow.jsp</result>	
+		<result name="login"  type = "redirect">/electionsNowInfo.jsp</result>
 	</action>
     
     	<action name="PersonRegister" class="hey.action.PersonRegisterAction" method="execute">

@@ -11,11 +11,18 @@
 	<h1>New Election</h1>
 
 	<p>
-	<a href="createElectionCG.jsp">Conselho Geral</a>
+	<form action="CreateCG" method="post">
+		<s:submit value="Conselho Geral"></s:submit>
+	</form>
 	<p>
-	<a href="createElectionNucleo.jsp">Nucleo de Estudantes</a>
+	
+	<form action="CreateNucleo" method="post">
+		<s:submit value="Nucleo de Estudantes"></s:submit>
+	</form>
 	<p>
-	<a href="createElectionDep.jsp">Departamento</a>
+	<form action="CreateDep" method="post">
+		<s:submit value="Departamento"></s:submit>
+	</form>
 	<p-->
 
 

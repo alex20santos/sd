@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Editar Eleição</h1>
-	<s:form action="Elections" method="post">
+	<s:form action="EditElections" method="post">
 			<p>
 		1 - Data
 			<p>

@@ -10,37 +10,56 @@
 <body>
 	<h1>Admin Console</h1>
 	<p>
-	<a href="insertPerson.jsp">Registar Pessoa</a>
+	<form action="Person" method="post">
+		<s:submit value="Registar Pessoa"></s:submit>
+	</form>
 	<p>
-	<a href="editPerson.jsp">Editar dados de uma pessoa</a>
+	<form action="EditPerson" method="post">
+		<s:submit value="Editar dados de uma Pessoa"></s:submit>
+	</form>
 	<p>
-	<a href="depManagementMenu.jsp"> Gerir departamentos</a>
+	<form action="DepManage" method="post">
+		<s:submit value="Gerir departamentos"></s:submit>
+	</form>
 	<p>
-	<a href="createElection.jsp"> Criar eleição</a>
+	<form action="CreateEl" method="post">
+		<s:submit value="Criar eleição"></s:submit>
+	</form>
 	<p>
 	<p>
 	<form id = "myForm" action="candidatesManage" method="post">
 		<s:hidden name="type" value="getElections" />
-    		<a href="candidatesMenu.jsp" onclick="document.getElementById('myForm').submit();">Gestão de listas candidatas a uma eleição</a>
+		<s:submit value="Gestão de listas candidatas a uma eleição"></s:submit>
 	</form>
 	<p>
-	<form id = "myForm" action="Elections" method="post">
+	<form id = "myForm" action="EditElections" method="post">
 		<s:hidden name="type" value="getElections" />
-    		<a href="chooseElection.jsp" onclick="document.getElementById('myForm').submit();">Editar eleição</a>
+    		<s:submit value="Editar eleição"></s:submit>
 	</form>
 	<p>
-	<a href="antecipatedVoteLogin.jsp"> Voto antecipado</a>
+	<form action="AntVote" method="post">
+		<s:submit value="Voto antecipado"></s:submit>
+	</form>
 	<p>
-	<a href="placeOfVote.jsp"> Ver em que local votou um eleitor</a>
+	<form action="PlaceVote" method="post">
+		<s:submit value="Ver em que local votou um eleitor"></s:submit>
+	</form>
 	<p>	
+	<form action="ElectionsNow" method="post">
+		<s:hidden name="type" value="electionsNow" />
+		<s:submit value="Mostrar informação detalhada de eleições a acontecer neste momento"></s:submit>
+	</form>
+	<p>
 	<form id = "myForm" action="Elections" method="post">
 		<s:hidden name="type" value="pastElections" />
-    		<a href="choosePreviousElection.jsp" onclick="document.getElementById('myForm').submit();">Mostrar informação detalhada de eleições passadas</a>  
-    		<s:submit value="Choose"/> 		
+		<s:submit value="Consultar detalhes de eleições passadas"></s:submit>
 	</form>
 	<p>
-	<a href="membersManageMenu.jsp"> Gestão de membros de mesa de voto</a>
-	
+	<form action="MembersMenu" method="post">
+		<s:submit value="Gestão de membros de mesa de voto"></s:submit>
+	</form>
+	<p>
+
 	
 	
 

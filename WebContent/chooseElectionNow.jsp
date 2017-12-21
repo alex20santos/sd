@@ -6,20 +6,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit Election</title>
+<title>Live Elections</title>
 </head>
 <body>
-	<h1>Eleições disponiveis para editar</h1>
+	<h1>Eleições a acontecer </h1>
 
-	<c:forEach items="${session.elections}" var="value">
-         <s:form action="EditElections" method="post">
-           		${value.name}
-			<input type="hidden" name="chosenElectionString" value="${value.name}">
-			<s:hidden name="type" value="setElection" />
-			<s:submit value="Choose"/>
-		</s:form>
-		<p>
-	</c:forEach>
+
+	<s:form action="ElectionsNow" method="post">
+		<c:forEach items="${session.electionsNow}" var="value">
+	           ${value.name}
+				<input type="hidden" name="chosenElectionString" value="${value.name}">
+				<s:hidden name="type" value="getInfo" />
+				<s:submit value="Choose"/>
+			<p>
+		</c:forEach>
+	</s:form>
 	
 </body>
 </html>
