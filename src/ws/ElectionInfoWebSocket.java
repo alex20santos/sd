@@ -1,6 +1,7 @@
 package ws;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,14 +17,14 @@ import javax.websocket.OnError;
 import javax.websocket.Session;
 
 @ServerEndpoint(value = "/ws")
-public class WebSocketAnnotation {
+public class ElectionInfoWebSocket {
     private Session session;
     private boolean isUp;
     private ServerInterface rmiCon;
 	private String naming =  "//127.0.0.1:7000/server";
-    
+    private String elId = "";
 
-    public WebSocketAnnotation() {
+    public ElectionInfoWebSocket() {
         
     }
 
@@ -33,27 +34,28 @@ public class WebSocketAnnotation {
         isUp = true;
         String info = " ";
         String new_info = "";
-        Election el;
-        while(isUp){
-        	el = (Election) ((Object) session.getBasicRemote()).get("chosenElection");
-        	info = rmiCon.electionInfoRealTime(Integer.toString(el.id));
-        	if(!info.equals(new_info)){
-        		sendMessage(info);
-        	}
+        while(isUp && this.session.isOpen()){ 
+        	try {
+				new_info = rmiCon.electionInfoRealTime(this.elId);
+				if(!info.equals(new_info)){
+	        		new_info = info;
+	        		sendMessage(info);
+	        	}
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
     }
 
     @OnClose
     public void end() {
-    	isUp=false;
+    	this.isUp=false;
     }
 
     @OnMessage
     public void receiveMessage(String message) {
-		// one should never trust the client, and sensitive HTML
-        // characters should be replaced with &lt; &gt; &quot; &amp;
-    	String upperCaseMessage = message.toUpperCase();
-    	sendMessage("[" + username + "] " + upperCaseMessage);
+		this.elId = message;
     }
     
     @OnError

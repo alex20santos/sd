@@ -1518,9 +1518,9 @@ public class RMIServer extends UnicastRemoteObject implements ServerInterface {
             Election el = searchElection(id);
             ArrayList<Candidate> cands = getCandidates(el);
        
-            String info = "Blank:"+Integer.toString(el.blank_votes)+";Nulo:"+Integer.toString(el.null_votes)+";";
+            String info = "Branco:"+Integer.toString(el.blank_votes)+"\n;Nulo:"+Integer.toString(el.null_votes)+";\n";
             for(Candidate c:cands ){
-                info += c.name+":"+Integer.toString(getNumberOfVotesOfCandidate(c))+";";
+                info += c.name+":"+Integer.toString(getNumberOfVotesOfCandidate(c))+";\n";
             }
             return info;
         }
